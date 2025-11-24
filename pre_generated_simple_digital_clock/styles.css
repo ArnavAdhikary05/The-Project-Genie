@@ -1,0 +1,37 @@
+/* styles.css - Minimal digital clock styling */
+
+/* Reset default margin/padding and set box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full‑height flex container to center clock */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f5f5; /* neutral light background */
+    font-family: system-ui, sans-serif;
+}
+
+/* Clock element styling */
+#clock {
+    font-size: 4rem; /* base font size */
+    font-family: 'Roboto', sans-serif;
+    color: #333333; /* dark text for contrast */
+    background: #ffffff; /* white background for the clock */
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    #clock {
+        font-size: 2.5rem; /* smaller font on small screens */
+    }
+}

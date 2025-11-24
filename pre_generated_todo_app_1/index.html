@@ -1,0 +1,32 @@
+<!--
+    index.html - Main HTML skeleton for SimpleToDoApp
+    This file defines the structure of the to-do application, including the
+    container, input field, task list, and footer with controls for filtering
+    and clearing tasks. It links to external CSS (styles.css) and JavaScript
+    (script.js) files.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple To-Do App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="todo-app">
+        <h1>Simple To-Do App</h1>
+        <input id="task-input" placeholder="What needs to be done?" autocomplete="off" />
+        <button id="add-button">Add</button>
+        <ul id="task-list" class="task-list"></ul>
+        <div class="footer">
+            <span id="items-left"></span>
+            <button class="filter-button" data-filter="all" id="filter-all">All</button>
+            <button class="filter-button" data-filter="active" id="filter-active">Active</button>
+            <button class="filter-button" data-filter="completed" id="filter-completed">Completed</button>
+            <button id="clear-completed">Clear completed</button>
+        </div>
+    </div>
+</body>
+</html>

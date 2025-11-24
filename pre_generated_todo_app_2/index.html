@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <main id="app">
+        <header>
+            <h1>Colorful Todo App</h1>
+        </header>
+        <section aria-label="Add new task">
+            <input type="text" id="new-task-input" placeholder="What needs to be done?" aria-label="New task" />
+            <button id="add-task-btn" aria-label="Add task">Add</button>
+        </section>
+        <nav aria-label="Task filter">
+            <ul id="filter-nav">
+                <li data-filter="all" class="active" tabindex="0">All</li>
+                <li data-filter="active" tabindex="0">Active</li>
+                <li data-filter="completed" tabindex="0">Completed</li>
+            </ul>
+        </nav>
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        <footer>
+            <p>© 2025 Colorful Todo App. Created by OpenAI.</p>
+        </footer>
+    </main>
+</body>
+</html>
