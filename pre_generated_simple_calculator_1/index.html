@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleCalc</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/calculator.js" defer></script>
+</head>
+<body>
+    <main class="calculator" aria-label="Simple calculator">
+        <div class="display" id="calc-display" role="textbox" aria-live="polite" aria-label="Calculator display">0</div>
+        <div class="buttons" role="grid">
+            <!-- Row 1 -->
+            <button class="btn btn-action" data-action="clear" aria-label="Clear" role="gridcell">C</button>
+            <button class="btn btn-action" data-action="backspace" aria-label="Backspace" role="gridcell">⌫</button>
+            <button class="btn btn-operator" data-action="divide" aria-label="Divide" role="gridcell">÷</button>
+            <button class="btn btn-operator" data-action="multiply" aria-label="Multiply" role="gridcell">×</button>
+            <!-- Row 2 -->
+            <button class="btn btn-number" data-action="7" aria-label="7" role="gridcell">7</button>
+            <button class="btn btn-number" data-action="8" aria-label="8" role="gridcell">8</button>
+            <button class="btn btn-number" data-action="9" aria-label="9" role="gridcell">9</button>
+            <button class="btn btn-operator" data-action="subtract" aria-label="Subtract" role="gridcell">-</button>
+            <!-- Row 3 -->
+            <button class="btn btn-number" data-action="4" aria-label="4" role="gridcell">4</button>
+            <button class="btn btn-number" data-action="5" aria-label="5" role="gridcell">5</button>
+            <button class="btn btn-number" data-action="6" aria-label="6" role="gridcell">6</button>
+            <button class="btn btn-operator" data-action="add" aria-label="Add" role="gridcell">+</button>
+            <!-- Row 4 -->
+            <button class="btn btn-number" data-action="1" aria-label="1" role="gridcell">1</button>
+            <button class="btn btn-number" data-action="2" aria-label="2" role="gridcell">2</button>
+            <button class="btn btn-number" data-action="3" aria-label="3" role="gridcell">3</button>
+            <button class="btn btn-action" data-action="equals" aria-label="Equals" role="gridcell">=</button>
+            <!-- Row 5 -->
+            <button class="btn btn-number btn-zero" data-action="0" aria-label="0" role="gridcell" style="grid-column: span 2;">0</button>
+            <button class="btn btn-number" data-action="decimal" aria-label="Decimal point" role="gridcell">.</button>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,288 @@
+/*
+  styles.css - Colorful Modern UI for Todo App
+  -------------------------------------------------
+  This stylesheet provides:
+  • CSS reset and box-sizing
+  • Root design tokens (colors, fonts)
+  • Layout for the #app container
+  • Header, input, button, filter navigation styling
+  • Task list item styling with gradients, shadows, and completed state
+  • Drag‑and‑drop visual cues
+  • Responsive adjustments
+  • Keyframe animations for adding/removing tasks
+*/
+
+/* ------------------------------------------------------------------
+   1. CSS Reset & Box‑Sizing
+   ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-primary, 'Helvetica Neue', Arial, sans-serif);
+  background: var(--bg-color, #f5f7fa);
+  color: var(--text-color, #333);
+}
+
+/* ------------------------------------------------------------------
+   2. Root Variables (Design Tokens)
+   ------------------------------------------------------------------ */
+:root {
+  /* Colors */
+  --color-primary: #ff6b6b;   /* vibrant red */
+  --color-secondary: #4ecdc4; /* teal */
+  --color-accent: #ffe66d;    /* sunshine yellow */
+  --color-bg: #f5f7fa;        /* light gray‑blue */
+  --color-surface: #ffffff;   /* white cards */
+  --color-text: #2d2d2d;      /* dark gray */
+  --color-muted: #a0a0a0;    /* for disabled/placeholder */
+
+  /* Fonts */
+  --font-primary: 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  /* Sizing */
+  --max-width: 800px;
+  --spacing-unit: 1rem;
+}
+
+/* ------------------------------------------------------------------
+   3. Layout – #app container
+   ------------------------------------------------------------------ */
+#app {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ------------------------------------------------------------------
+   4. Header
+   ------------------------------------------------------------------ */
+#app > header {
+  text-align: center;
+  padding: var(--spacing-unit);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#app > header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------
+   5. Input Section (Add new task)
+   ------------------------------------------------------------------ */
+section[aria-label="Add new task"] {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+#new-task-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-muted);
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#new-task-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.2);
+}
+
+#add-task-btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#add-task-btn:hover {
+  background: #ff4c4c;
+  transform: translateY(-2px);
+}
+
+#add-task-btn:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------
+   6. Filter Navigation
+   ------------------------------------------------------------------ */
+#filter-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+#filter-nav li {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+#filter-nav li:hover,
+#filter-nav li:focus {
+  background: var(--color-accent);
+  color: var(--color-text);
+  transform: translateY(-2px);
+}
+
+#filter-nav li.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------------
+   7. Task List & Items
+   ------------------------------------------------------------------ */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, opacity 0.3s ease, background 0.3s ease;
+  cursor: grab;
+}
+
+.task-item:active {
+  cursor: grabbing;
+}
+
+.task-item .task-text {
+  flex: 1;
+  margin-right: 0.5rem;
+  word-break: break-word;
+}
+
+.task-item button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.task-item button:hover {
+  color: var(--color-accent);
+}
+
+/* Completed state */
+.task-item.completed {
+  background: var(--color-surface);
+  color: var(--color-muted);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+}
+
+/* ------------------------------------------------------------------
+   8. Drag‑and‑Drop Visual Cues
+   ------------------------------------------------------------------ */
+.task-item.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.task-item.drag-over {
+  border: 2px dashed var(--color-accent);
+}
+
+/* ------------------------------------------------------------------
+   9. Animations – Add / Remove
+   ------------------------------------------------------------------ */
+@keyframes taskEnter {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes taskLeave {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+.task-item.enter {
+  animation: taskEnter 0.35s ease-out forwards;
+}
+
+.task-item.leave {
+  animation: taskLeave 0.35s ease-out forwards;
+}
+
+/* ------------------------------------------------------------------
+   10. Responsive Media Queries (mobile first)
+   ------------------------------------------------------------------ */
+@media (max-width: 600px) {
+  #app {
+    padding: var(--spacing-unit);
+  }
+
+  #app > header h1 {
+    font-size: 1.5rem;
+  }
+
+  #new-task-input,
+  #add-task-btn {
+    font-size: 0.9rem;
+  }
+
+  #filter-nav li {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .task-item button {
+    align-self: flex-end;
+  }
+}
+
+/* End of styles.css */

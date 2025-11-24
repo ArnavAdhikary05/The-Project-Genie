@@ -1,0 +1,161 @@
+/*
+ * SimpleCalc UI Styles
+ * -------------------------------------------------
+ * Root variables for theming, sizing, and spacing.
+ */
+:root {
+  /* Primary colors */
+  --color-primary: #4a90e2;          /* Main accent */
+  --color-primary-dark: #357ab8;    /* Darker shade for hover */
+  --color-primary-light: #e6f2ff;   /* Light background */
+  --color-operator: #ff9500;        /* Operators */
+  --color-operator-dark: #e08900;
+  --color-action: #ff3b30;          /* Clear, equals, etc. */
+  --color-action-dark: #d32f2f;
+  --color-bg: #f5f7fa;               /* Page background */
+  --color-display-bg: #ffffff;      /* Display background */
+  --color-display-text: #222222;    /* Display text */
+  --color-button-bg: #ffffff;       /* Default button background */
+  --color-button-border: #dddddd;   /* Default button border */
+
+  /* Font families */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Sizing */
+  --max-width: 420px;               /* Max width of calculator */
+  --border-radius: 12px;
+  --spacing: 1rem;                  /* General spacing */
+  --gap: 0.5rem;                    /* Grid gap between buttons */
+
+  /* Button base dimensions (will be overridden responsively) */
+  --btn-font-size: 1.2rem;
+  --btn-padding: 0.75rem;
+}
+
+/* Global reset / base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Calculator container */
+.calculator {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: var(--spacing) auto;
+  padding: var(--spacing);
+  background: var(--color-primary-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Display */
+.display {
+  font-size: calc(2.5vw + 1rem); /* responsive size */
+  text-align: right;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-display-bg);
+  color: var(--color-display-text);
+  border: 2px solid var(--color-button-border);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-bottom: var(--gap);
+}
+
+/* Buttons grid */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+/* Base button */
+.btn {
+  font-size: var(--btn-font-size);
+  padding: var(--btn-padding);
+  cursor: pointer;
+  border: 2px solid var(--color-button-border);
+  border-radius: var(--border-radius);
+  background: var(--color-button-bg);
+  transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+  user-select: none;
+  min-height: 3rem; /* ensures a decent tap target */
+}
+
+/* Number buttons */
+.btn-number {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+/* Operator buttons */
+.btn-operator {
+  background: var(--color-operator);
+  color: #fff;
+  border-color: var(--color-operator-dark);
+}
+
+/* Action buttons (clear, equals, backspace) */
+.btn-action {
+  background: var(--color-action);
+  color: #fff;
+  border-color: var(--color-action-dark);
+}
+
+/* Hover / focus states for accessibility */
+.btn:hover,
+.btn:focus {
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.btn-number:hover,
+.btn-number:focus {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-operator:hover,
+.btn-operator:focus {
+  background: var(--color-operator-dark);
+}
+
+.btn-action:hover,
+.btn-action:focus {
+  background: var(--color-action-dark);
+}
+
+/* Ensure the zero button spans two columns (already set inline) */
+.btn-zero {
+  grid-column: span 2;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 480px) {
+  :root {
+    --btn-font-size: 1rem;
+    --btn-padding: 0.5rem;
+    --gap: 0.35rem;
+  }
+
+  .display {
+    font-size: calc(4vw + 0.8rem);
+    padding: 0.4rem 0.6rem;
+  }
+
+  .calculator {
+    padding: 0.75rem;
+  }
+}
